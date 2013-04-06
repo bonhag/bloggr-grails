@@ -29,6 +29,21 @@ class PostController {
         render data as JSON
     }
 
+    def update() {
+        // id is implied by request (i.e., PUT /post/2)
+        def post = Post.get(params.id)
+
+        post.properties = request.JSON.post
+
+        post.save()
+
+        def data = [
+            post: outgoingPost(post)
+        ]
+
+        render data as JSON
+    }
+
     def outgoingPost(post) {
         [
             id: post.id,
