@@ -14,8 +14,8 @@ class BootStrap {
         new Post(
             title: "Hi, Liz!",
             author: "Jeff Bonhag",
-            intro: "It's getting dar in the world...",
-            extended: "*Jesus Lives is what my guitar says.  I __love__ it!",
+            intro: "It's getting dark in the world...",
+            extended: "*Jesus Lives* is what my guitar says.  I __love__ it!",
             publishedAt: new Date()
         ).save()
     }
