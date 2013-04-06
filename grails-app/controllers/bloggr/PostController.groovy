@@ -5,7 +5,7 @@ import grails.converters.JSON
 class PostController {
 
     def index() { }
-    def json() {
+    def list() {
         render Post.list() as JSON
     }
 }
