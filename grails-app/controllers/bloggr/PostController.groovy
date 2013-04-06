@@ -11,15 +11,8 @@ class PostController {
         // render Post.list() as JSON
 
         def data = [
-            posts: Post.list().collect { p ->
-                [
-                    id: p.id,
-                    title: p.title,
-                    author: p.author,
-                    intro: p.intro,
-                    extended: p.extended,
-                    published_at: p.publishedAt.format("MM/dd/yyyy")
-                ]
+            posts: Post.list().collect { post ->
+                outgoingPost(post)
             }
         ]
 
@@ -30,16 +23,20 @@ class PostController {
         def post = Post.get(params.id)
 
         def data = [
-            post: [
-                id: post.id,
-                title: post.title,
-                author: post.author,
-                intro: post.intro,
-                extended: post.extended,
-                published_at: post.publishedAt.format("MM/dd/yyyy")
-            ]
+            post: outgoingPost(post)
         ]
 
         render data as JSON
+    }
+
+    def outgoingPost(post) {
+        [
+            id: post.id,
+            title: post.title,
+            author: post.author,
+            intro: post.intro,
+            extended: post.extended,
+            published_at: post.publishedAt.format("MM/dd/yyyy")
+        ]
     }
 }
