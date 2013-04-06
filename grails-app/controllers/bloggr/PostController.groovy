@@ -27,6 +27,19 @@ class PostController {
     }
 
     def show() {
-        render Post.get(params.id) as JSON
+        def post = Post.get(params.id)
+
+        def data = [
+            post: [
+                id: post.id,
+                title: post.title,
+                author: post.author,
+                intro: post.intro,
+                extended: post.extended,
+                published_at: post.publishedAt.format("MM/dd/yyyy")
+            ]
+        ]
+
+        render data as JSON
     }
 }
